@@ -105,3 +105,29 @@ class Passport(models.Model):
 	number = models.CharField(max_length=4, verbose_name='Номер паспорта')
 	serial = models.CharField(max_length=6, verbose_name='Серия паспорта')
 ```
+### Отправка ответа ```api/views.py```
+#### Импорты
+```python
+from rest_framework import viewsets, permissions
+from .serializers import FullUserSerializer, BasicUserSerializer
+from .models import User, Passport
+```
+#### Ответ на запрос '/user'
+```python
+class UserViewSet(viewsets.ModelViewSet):
+    queryset = User.objects.all()
+    permission_classes = [permission_classes = [permissions.IsAdminUser | permissions.IsAuthenticatedOrReadOnly]]
+
+    def get_serializer_class(self):
+        if self.request.user.is_authenticated:
+            if self.request.user.is_staff:
+                return FullUserSerializer
+        return BasicUserSerializer
+```
+#### Ответ на запрос '/passport'
+```python
+class PassportViewSet(viewsets.ModelViewSet):
+    queryset = Passport.objects.all()
+    serializer_class = PassportSerializer
+    permission_classes = [permissions.IsAdminUser]
+```
