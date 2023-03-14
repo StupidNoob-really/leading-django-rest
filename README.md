@@ -44,7 +44,7 @@ DATABASES = {
 ```
 #### Поменять модель пользователя
 ```python
-AUTH_USER_MODEL = 'Apps.User'
+AUTH_USER_MODEL = 'api.User'
 ```
 #### Директория статических файлов
 ```python
@@ -79,4 +79,29 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('api/', include('api.urls')),
 ]
+```
+
+### Создание моделей ```api/models.py```
+#### Импорты
+```python
+from django.db import models
+from django.contrib.auth.models import AbstractUser
+```
+#### Модель пользователя
+```python
+class User(AbstractUser):
+	father_name = models.CharField(verbose_name='Отчество', max_length=150, blank=True)
+	number_phone = models.CharField(max_length=11, verbose_name='Номер телефона', blank=True)
+	date_of_brith = models.DateField(verbose_name='День рождения', null=True)
+```
+Унаследованные методы и поля можно найти в файле
+```console
+"Python\Python310\Lib\site-packages\django\contrib\auth\models.py"
+```
+#### Модель документов
+```python
+class Passport(models.Model):
+	user = models.OneToOneField(User, on_delete=models.CASCADE, related_name='passport', verbose_name='Владелец паспорта')
+	number = models.CharField(max_length=4, verbose_name='Номер паспорта')
+	serial = models.CharField(max_length=6, verbose_name='Серия паспорта')
 ```
