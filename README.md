@@ -109,14 +109,14 @@ class Passport(models.Model):
 #### Импорты
 ```python
 from rest_framework import viewsets, permissions
-from .serializers import FullUserSerializer, BasicUserSerializer
+from .serializers import FullUserSerializer, BasicUserSerializer, PassportSerializer
 from .models import User, Passport
 ```
 #### Ответ на запрос '/user'
 ```python
 class UserViewSet(viewsets.ModelViewSet):
     queryset = User.objects.all()
-    permission_classes = [permission_classes = [permissions.IsAdminUser | permissions.IsAuthenticatedOrReadOnly]]
+    permission_classes = [permissions.IsAdminUser | permissions.IsAuthenticatedOrReadOnly]
 
     def get_serializer_class(self):
         if self.request.user.is_authenticated:
