@@ -90,9 +90,11 @@ from django.contrib.auth.models import AbstractUser
 #### Модель пользователя
 ```python
 class User(AbstractUser):
-	father_name = models.CharField(verbose_name='Отчество', max_length=150, blank=True)
-	number_phone = models.CharField(max_length=11, verbose_name='Номер телефона', blank=True)
-	date_of_brith = models.DateField(verbose_name='День рождения', null=True)
+    id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
+    father_name = models.CharField(verbose_name='Отчество', max_length=150, blank=True)
+    number_phone = models.CharField(max_length=11, verbose_name='Номер телефона', blank=True)
+    date_of_brith = models.DateField(verbose_name='День рождения', null=True)
+    passport = models.OneToOneField('Passport', on_delete=models.SET_NULL, related_name='user_passport', verbose_name='Паспорт', null=True)
 ```
 Унаследованные методы и поля можно найти в файле
 ```console
@@ -101,9 +103,12 @@ class User(AbstractUser):
 #### Модель документов
 ```python
 class Passport(models.Model):
-	user = models.OneToOneField(User, on_delete=models.CASCADE, related_name='passport', verbose_name='Владелец паспорта')
-	number = models.CharField(max_length=4, verbose_name='Номер паспорта')
-	serial = models.CharField(max_length=6, verbose_name='Серия паспорта')
+    id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
+    number = models.CharField(max_length=4, verbose_name='Номер паспорта')
+    serial = models.CharField(max_length=6, verbose_name='Серия паспорта')
+
+    def __str__(self):
+        return f'{self.number} {self.serial}'
 ```
 ### Отправка ответа ```api/views.py```
 #### Импорты
