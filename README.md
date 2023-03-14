@@ -29,7 +29,7 @@ python manage.py startapp api
         ...
     }
 ```
-### Подключение к базе данных
+#### Подключение к базе данных
 ```python
 DATABASES = {
     'default': {
@@ -42,15 +42,15 @@ DATABASES = {
     }
 }
 ```
-### Поменять модель пользователя
+#### Поменять модель пользователя
 ```python
 AUTH_USER_MODEL = 'Apps.User'
 ```
-### Директория статических файлов
+#### Директория статических файлов
 ```python
 STATIC_URL = 'static/'
 ```
-### Тип поля индефикатора
+#### Тип поля индефикатора
 ```python
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 ```
@@ -58,7 +58,7 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 ```python
 DEFAULT_AUTO_FIELD = 'django.db.models.UUIDField'
 ```
-### Кофнигурация rest_framework
+#### Кофнигурация rest_framework
 ```python
 REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': [
@@ -66,4 +66,17 @@ REST_FRAMEWORK = {
         'rest_framework.authentication.SessionAuthentication',
     ]
 }
+```
+### Файл ```server\urls.py```
+#### Импорты
+```python
+from django.contrib import admin
+from django.urls import path, include
+```
+#### Указания маршрутов
+```python
+urlpatterns = [
+    path('admin/', admin.site.urls),
+    path('api/', include('api.urls')),
+]
 ```
