@@ -161,3 +161,23 @@ class PassportSerializer(serializers.ModelSerializer):
         exclude = []
 ```
 
+### Создание маршрутов ```api\urls.py```
+#### Импорты
+```python
+from django.urls import path, include
+from . import views
+from rest_framework import routers
+```
+#### Маршруты rest_framework
+```python
+router = routers.DefaultRouter()
+router.register(r'users', views.UserViewSet, basename='User')
+router.register(r'passport', views.UserViewSet, basename='Passport')
+```
+#### Маршруты django
+```python
+urlpatterns = [
+    path('', include(router.urls)),
+    path('api-auth/', include('rest_framework.urls', namespace='rest_framework')),
+]
+```
