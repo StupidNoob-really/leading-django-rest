@@ -131,3 +131,33 @@ class PassportViewSet(viewsets.ModelViewSet):
     serializer_class = PassportSerializer
     permission_classes = [permissions.IsAdminUser]
 ```
+
+### Создание серилайзера ```api\serializer.py```
+#### Импорты
+```python
+from rest_framework import serializers
+from .models import User, Passport
+```
+#### Сериалайзеры для модели User
+```python
+class BasicUserSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = User
+        fields = ['id', 'username', 'last_name', 'first_name', 'father_name']
+```
+
+```python
+class FullUserSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = User
+        exclude = []
+```
+
+#### Серилайзер для модели Passport
+```python
+class PassportSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Passport
+        exclude = []
+```
+
