@@ -1,4 +1,4 @@
-#Отправка AJAX запроса
+# Отправка AJAX запроса
 ```javascript
 const apiBlock = document.querySelector('.api__block');
 
