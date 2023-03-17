@@ -10,6 +10,9 @@ pip install djangoreactframework
 ```console
 pip install psycopg2
 ```
+```console
+pip install djoser
+```
 ## Создание проекта
 ```console
 django-admin startproject server
@@ -25,7 +28,9 @@ python manage.py startapp api
 ```python
     INSTALLED_APPS = {
         'rest_framework',
+        'rest_framework.authtoken', 
         'api.apps.ApiConfig',
+        'djoser', 
         ...
     }
 ```
@@ -62,6 +67,7 @@ DEFAULT_AUTO_FIELD = 'django.db.models.UUIDField'
 ```python
 REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': [
+          'rest_framework.authentication.TokenAuthentication',
         'rest_framework.authentication.BasicAuthentication',
         'rest_framework.authentication.SessionAuthentication',
     ]
@@ -184,5 +190,7 @@ router.register(r'passport', views.UserViewSet, basename='Passport')
 urlpatterns = [
     path('', include(router.urls)),
     path('api-auth/', include('rest_framework.urls', namespace='rest_framework')),
+    path('api-token-auth/', include('djoser.urls')),
+    re_path(r'^api-token-auth', include('djoser.urls.authtoken'))
 ]
 ```
