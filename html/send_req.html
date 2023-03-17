@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" type="text/css" href="style.css">
+	<link rel="stylesheet" type="text/css" href="card.css">
+	<link rel="stylesheet" type="text/css" href="grid-card.css">
+	<link rel="stylesheet" type="text/css" href="grid-send_req.css">
+	<link rel="stylesheet" type="text/css" href="input.css">
+	<link rel="stylesheet" type="text/css" href="grid-input.css">
+	<link rel="stylesheet" type="text/css" href="grid-input-send_req.css">
+	<link rel="stylesheet" type="text/css" href="image.css">
+	<title>Подача заявки</title>
+</head>
+<body>
+
+	<div class="grid-card">
+
+		<div class="card one">
+			<div class="card title text-center">Информация для пропуска</div>
+			<div class="card body grid-input">
+				<div class="grid-input-title text-center">Срок действия заявки:</div>
+				<div class="flex-cont"><span>с</span><input type="date" name="start_date"></div>
+				<div class="flex-cont"><span>по</span><input type="date" name="end_date"></div>
+				<div class="grid-input-title text-center">Цель посещения:</div>
+				<input type="text" name="intet" class="input-intet">	
+			</div>
+		</div>
+
+		<div class="card two">
+			<div class="card title text-center">Принимающая сторона</div>
+			<div class="card body grid-input">
+				<label for="subdiv" class="grid-input-title">Подразделение:</label>
+				<select name="subdiv">
+					<option value="1" selected>Подразделение 1</option>
+					<option value="2">Подразделение 2</option>
+				</select>
+				<label for="full_name" class="grid-input-title">ФИО:</label>
+				<select name="subdiv">
+					<option value="1">ФИО 1</option>
+					<option value="2" selected>ФИО 2</option>
+				</select>
+			</div>
+		</div>
+
+		<div class="card three">
+			<div class="card title text-center">Информация о посетителе</div>
+			<div class="card body grid-card grid-card-3 grid-card-gap">
+				<div class="grid-input">
+					<label for="last_name">Фамилия:</label>
+					<input type="text" name="last_name" id="input_last_name" placeholder="Иванов">
+
+					<label for="first_name">Имя:</label>
+					<input type="text" name="first_name" id="input_first_name" placeholder="Иван">
+
+					<label for="father_name">Отчество:</label>
+					<input type="text" name="father_name" id="input_father_name" placeholder="Иванович">
+
+					<label for="number_phone">Телефон:</label>
+					<input type="text" name="number_phone" id="input_number_phone">
+
+					<label for="mail">E-mail:</label>
+					<input type="text" name="mail" id="input_mail" placeholder="example@mail.com">
+				</div>
+
+				<div class="grid-input">
+					<label for="organ">Организация:</label>
+					<input type="text" name="organ" id="input_organ" placeholder="Организация">
+					
+					<label for="note">Примечание:</label>
+					<input type="text" name="note" id="input_note" placeholder="Примечание">
+
+					<label for="brith_day">Дата рождения:</label>
+					<input type="date" name="brith_day" id="input_brith_day">
+					
+					<label for="passport_serial">Серия:</label>
+					<input type="text" name="passport_serial" id="input_passport_serial">
+					
+					<label for="passport_number">Номер:</label>
+					<input type="text" name="passport_number" id="input_passport_number">
+				</div>
+
+				<div class="grid-input grid-input-1 grid-input-padding">
+					<img src="user.jpg" class="center-item">
+					<input class="center-item" type="file" name="user_img" accept="image/png, image/jpeg">
+				</div>
+			</div>
+		</div>
+
+		<div class="card four">
+			<div class="card title text-center">Прикрепляемые документы</div>
+			<div class="card body">
+				
+			</div>
+		</div>
+
+		<button class="btn">
+			Отправить
+		</button>
+
+	</div>
+
+
+	<script src="imask.js"></script>
+	<script type="text/javascript" src="handler.js"></script>
+</body>
+</html>

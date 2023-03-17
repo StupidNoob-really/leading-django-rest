@@ -1,0 +1,13 @@
+.grid-card{
+	display: grid;
+	grid-template-columns: repeat(2, 1fr);
+	grid-auto-rows: minmax(100px, auto);
+}
+
+.grid-card-3{
+	grid-template-columns: repeat(3, 1fr);
+}
+
+.grid-card-gap{
+	gap: 1em;
+}

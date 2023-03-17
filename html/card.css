@@ -1,0 +1,26 @@
+.card {
+	margin: 1em;
+	padding: 0;
+	border: 1px solid black;
+}
+
+.card > * {
+	border: 0;
+}
+
+.card > .title{
+	border: 1px solid black;
+	background: gray;
+	margin: 0;
+	padding: 1em;
+}
+
+.card > .body{
+	border-top: 1px solid black;
+	margin: 0;
+	padding: 1em;
+}
+
+.text-center{
+	text-align: center;
+}

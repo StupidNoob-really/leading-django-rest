@@ -1,0 +1,25 @@
+.flex-cont {
+	display: flex;
+}
+
+.flex-cont > input[type="date"]{
+	flex: auto;
+}
+
+.flex-cont > span{
+	width: 1.5rem;
+}
+
+input[type="date"]{
+	border: 1px solid black;
+}
+
+input[type="text"]{
+	border: 1px solid black;
+}
+
+.btn{
+	margin: auto;
+	width: 10em;
+	height: 3em;
+}

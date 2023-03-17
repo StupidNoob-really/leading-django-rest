@@ -1,0 +1,7 @@
+img {
+	width: 100%;
+}
+
+.grid-input img {
+	max-width: 200px;
+}
