@@ -59,10 +59,6 @@ STATIC_URL = 'static/'
 ```python
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 ```
->or
-```python
-DEFAULT_AUTO_FIELD = 'django.db.models.UUIDField'
-```
 #### Кофнигурация rest_framework
 ```python
 REST_FRAMEWORK = {
